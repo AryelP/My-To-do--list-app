@@ -1,53 +1,140 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    width: 100%;
-    height: 100vh;
-    background-color: #212121;
-    color: #efefef;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: sans-serif;
-}
-h1.title {
-    margin-top: 20px;
-}
+  /* Include the padding and border in an element's total width and height */
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
 
-#todo_app {
-    margin-top: 15px;
-}
-#todo_app .todo .input {
-    padding: 10px 20px;
-    min-width: 400px;
-    font-size: 1rem;
-}
-#todo_app .todo .input:focus {
-    border: 2px solid #0e760e;
-    outline: none;
-}
-.todo button {
-    padding: 10px 20px;
-    border: 1px solid #0c620c;
-    font-size: 1rem;
-    background-color: #0c620c;
-    color: #efefef;
-    cursor: pointer;
-    animation: background-color 0.6s ease-in-out;
-}
-.todo button:hover {
-    background-color: #0e760e;
-}
+  .container {
+      max-width: 850px;
+      margin: 0 auto;
+      /* display: none; */
+  }
 
-ul#todo_list {
-    list-style: none;
-    margin: 15px 0;
-}
+  .second-con {
+      height: 100vh;
+      background-color: violet;
+  }
 
-ul#todo_list li {
-    padding: 10px 0px;
-    border-bottom: 1px solid #2e2e2e;
-}
+  .todolist {
+      background-image: url("photos/Christmas\ greetings.jpg");
+      background-repeat: repeat-x;
+      background-position: center;
+      background-size: 500px 650px;
+      height: 100vh;
+      width: auto;
+      margin: 0;
+      padding: 0;
+  }
+
+
+  /* Remove margins and padding from the list */
+  ul {
+      margin: 0;
+      padding: 0;
+  }
+
+  /* Style the list items */
+  ul li {
+      cursor: pointer;
+      position: relative;
+      padding: 12px 8px 12px 40px;
+      list-style-type: none;
+      background: #eee;
+      font-size: 18px;
+      transition: 0.2s;
+
+      /* make the list items unselectable */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+
+  /* Set all odd list items to a different color (zebra-stripes) */
+  ul li:nth-child(odd) {
+      background: #f9f9f9;
+  }
+
+  /* Darker background-color on hover */
+  ul li:hover {
+      background: #ddd;
+  }
+
+  /* When clicked on, add a background color and strike out text */
+  ul li.checked {
+      background: #888;
+      color: #fff;
+      text-decoration: line-through;
+  }
+
+  /* Add a "checked" mark when clicked on */
+  ul li.checked::before {
+      content: '';
+      position: absolute;
+      border-color: #fff;
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      top: 10px;
+      left: 16px;
+      transform: rotate(45deg);
+      height: 15px;
+      width: 7px;
+  }
+
+  /* Style the close button */
+  .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 12px 16px 12px 16px;
+  }
+
+  .close:hover {
+      background-color: #f44336;
+      color: white;
+  }
+
+  /* Style the header */
+  .header {
+      background-color: #f44336;
+      padding: 30px 40px;
+      color: white;
+      text-align: center;
+  }
+
+  /* Clear floats after the header */
+  .header:after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+
+  /* Style the input */
+  input {
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      width: 75%;
+      padding: 10px;
+      float: left;
+      font-size: 16px;
+  }
+
+  /* Style the "Add" button */
+  .addBtn {
+      padding: 10px;
+      width: 25%;
+      background: #d9d9d9;
+      color: #555;
+      float: left;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 0;
+  }
+
+  .addBtn:hover {
+      background-color: #bbb;
+  }

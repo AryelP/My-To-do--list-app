@@ -22,29 +22,117 @@
 
         }
 
-        .nav-con {
+        .todo-con {
             /* margin-left: 20%; */
             max-width: 1100px;
             margin: 0 auto;
             /* float: right; */
-            background-color: rebeccapurple;
-            padding: 10px;
+            background-color: rgb(181, 150, 212);
+            border-radius: 20px;
+            padding: 20px;
         }
 
         img {
             width: 100%;
             height: auto;
         }
+
+        #curdate {
+            background-color: #e9e9e9;
+            color: #666;
+            border: none;
+            padding: 4px;
+
+
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="nav-con">
-            <img src="photos/Christmas greetings.jpg" alt="gritteng">
-            <img src="photos/greetings.jpg" alt="gritteng">
+        <div class="todo-con">
+
+            <h2>To Do List App</h2>
+            <br><br>
+            <form action="">
+
+
+                <label for="curdate">Current Date:</label>
+
+                <input type="text" id="curdate" name="curdate" readonly> <br><br>
+
+
+                <label for="title">Title:</label>
+                <br>
+                <input type="text" id="title" name="title" min=""> <br><br>
+
+                <label for="discrip">Discription:</label>
+                <input type="text" id="discrip" name="discrip"><br><br>
+
+
+                <label for="setdate">Set Date:</label>
+
+                <input type="date" id="setdate" name="setdate" min=""> <br><br>
+
+
+                <label for="timepick">Set Hours</label>
+                <input type="time" id="timepick"><br><br>
+
+                <input type="submit" value="Submit">
+
+            </form>
         </div>
+        <ul class="myUL">
+            <li>I feed my chicken</li>
+        </ul>
+
+
+
+
+
     </div>
+
+    <script>
+
+        // for input
+
+        const dt = new Date();
+        const date = dt.getDate();
+        const mdex = dt.getMonth();
+        const mname = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const month = mname[mdex];
+        const year = dt.getFullYear();
+        let hours = dt.getHours();
+        const seconds = dt.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        const minutes = dt.getMinutes().toString().padStart(2, 0);
+        const today = dt.toISOString().split('T')[0];
+
+        let disday = document.getElementById("setdate");
+        disday.min = today;
+        disday.value = today;
+
+        const time = month + " " + date + ", " + year + " " + hours + ":" + minutes + " " + ampm;
+        document.getElementById("curdate").value = time;
+
+
+        // for list 
+
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            myNodelist[i].appendChild(span);
+        }
+
+
+
+
+    </script>
 </body>
 
 </html>

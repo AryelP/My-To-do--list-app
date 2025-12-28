@@ -12,7 +12,22 @@
         <div class="container">
             <div id="myDIV" class="header">
                 <h2 style="margin:5px">My To Do List</h2>
+                <label for="curdate">Current Date:</label>
+                <br>
+                <input type="text" id="curdate" name="curdate" readonly> <br>
+
+                <label for="myInput">Title:</label> <br>
                 <input type="text" id="myInput" placeholder="Title...">
+                <br>
+                <label for="discrip">Discription:</label> <br>
+                <input type="text" id="discrip" name="discrip"><br>
+
+                <label for="setdate">Set Date:</label>
+                <br>
+                <input type="date" id="setdate" name="setdate" min=""> <br>
+
+                <label for="timepick">Set Hours</label><br>
+                <input type="time" id="timepick"><br><br>
                 <span onclick="newElement()" class="addBtn">Add</span>
             </div>
 
@@ -29,6 +44,7 @@
     </div>
     <div class="second-con">
         this page
+        <p id="demo"></p>
     </div>
 
     <script src="script.js">

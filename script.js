@@ -35,6 +35,44 @@ distime.min = formattedsetTime;
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
+
+// var i;
+// for (i = 0; i < myNodelist.length; i++) {
+//     var span = document.createElement("SPAN");
+//     var txt = document.createTextNode("");
+//     span.className = "t-data";
+//     span.appendChild(txt);
+//     myNodelist[i].appendChild(span);
+// }
+
+
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+    var span1 = document.createElement("SPAN");
+    var txt = document.createTextNode("");
+    span1.className = "setDate";
+    span1.appendChild(txt);
+    myNodelist[i].appendChild(span1);
+}
+
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+    var span2 = document.createElement("SPAN");
+    var txt = document.createTextNode("");
+    span2.className = "setHour";
+    span2.appendChild(txt);
+    myNodelist[i].appendChild(span2);
+}
+
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+    var button1 = document.createElement("div");
+    var txt = document.createTextNode(":");
+    button1.className = "td-btn";
+    button1.appendChild(txt);
+    myNodelist[i].appendChild(button1);
+}
+
 var i;
 for (i = 0; i < myNodelist.length; i++) {
     var span = document.createElement("SPAN");
@@ -55,6 +93,9 @@ for (i = 0; i < close.length; i++) {
 }
 
 
+
+
+
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function (ev) {
@@ -67,13 +108,27 @@ list.addEventListener('click', function (ev) {
 function newElement() {
     var li = document.createElement("li");
 
+    var span01 = document.createElement("span");
+    var inputValue = document.getElementById("myInput").value;
+    var txt3 = document.createTextNode(inputValue);
+    span01.className = "t-data";
+    span01.appendChild(txt3);
+    li.appendChild(span01);
+
+
     //for date
     var span1 = document.createElement("span");
     var dateinput = document.getElementById("setdate").value;
-    dt.setDate(dateinput);
+    // dt.setDate(dateinput);
+    let st = new Date(dateinput);
+    let gm = st.getMonth();
+    let gd = st.getDate();
+    let gy = st.getFullYear();
+    let gmn = mname[gm];
 
+    let fd = gmn + " " + gd + ", " + gy;
 
-    var txt1 = document.createTextNode(dateinput);
+    var txt1 = document.createTextNode(fd);
     span1.className = "setDate";
     span1.appendChild(txt1);
 
@@ -100,15 +155,13 @@ function newElement() {
     span2.appendChild(txt2);
 
     //for input
-    var inputValue = document.getElementById("myInput").value;
 
     //3 input
     // var allinput = inputValue + " " + date1 + " " + hour1;
 
-    var t = document.createTextNode(inputValue);
 
 
-    li.appendChild(t);
+
     li.appendChild(span1);
     li.appendChild(span2);
 
@@ -118,6 +171,14 @@ function newElement() {
         document.getElementById("myUL").appendChild(li);
     }
     document.getElementById("myInput").value = "";
+
+
+    var button1 = document.createElement("div");
+    var txt = document.createTextNode(":");
+    button1.className = "td-btn";
+    button1.appendChild(txt);
+    myNodelist[i].appendChild(button1);
+
 
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
@@ -135,4 +196,8 @@ function newElement() {
 
 
 }
+
+//for button
+
+
 

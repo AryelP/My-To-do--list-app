@@ -22,7 +22,14 @@ disday.value = today;
 const time = month + " " + date + ", " + year + " " + hours + ":" + minutes + " " + ampm;
 document.getElementById("curdate").value = time;
 
+let distime = document.getElementById("timepick");
 
+let setTime = hours + 1;
+let sethours = setTime.toString().padStart(2, '0');
+let setminutes = dt.getMinutes().toString().padStart(2, '0');
+let formattedsetTime = sethours + ":" + minutes;
+distime.value = formattedsetTime;
+distime.min = formattedsetTime;
 
 
 
@@ -64,11 +71,8 @@ function newElement() {
     var span1 = document.createElement("span");
     var dateinput = document.getElementById("setdate").value;
     dt.setDate(dateinput);
-    const setm = dt.getMonth();
-    const getm = mname[setm];
 
 
-    document.getElementById("demo").innerHTML = getm;
     var txt1 = document.createTextNode(dateinput);
     span1.className = "setDate";
     span1.appendChild(txt1);
@@ -81,10 +85,17 @@ function newElement() {
 
     var span2 = document.createElement("span");
     var hourinput = document.getElementById("timepick").value;
+    let hour = parseInt(hourinput.split(":")[0]);
+    let minutes = parseInt(hourinput.split(":")[1]);
+    minutes = minutes.toString().padStart(2, 0);
+    let setampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12 || 12;
+    let mh = hour.toString().padStart(2, 0);
+    let cm = mh + ":" + minutes + " " + setampm;
 
 
 
-    var txt2 = document.createTextNode(hourinput);
+    var txt2 = document.createTextNode(cm);
     span2.className = "setHour";
     span2.appendChild(txt2);
 
@@ -107,8 +118,6 @@ function newElement() {
         document.getElementById("myUL").appendChild(li);
     }
     document.getElementById("myInput").value = "";
-    // document.getElementById("picktime").value = "";
-    // document.getElementById("setdate").value = "";
 
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");

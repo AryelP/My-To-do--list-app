@@ -146,6 +146,8 @@ list.addEventListener('click', function (ev) {
 }, false);
 
 // Create a new list item when clicking on the "Add" button
+
+
 function newElement() {
     var li = document.createElement("li");
     li.className = "myli";
@@ -255,12 +257,6 @@ function newElement() {
 
     div1.appendChild(btncontent);
 
-
-
-
-    // var txt = document.createTextNode(":");
-    // div1.className = "td-btn";
-    // div1.appendChild(txt);
     li.appendChild(div1);
 
 
@@ -288,27 +284,42 @@ function newElement() {
 }
 
 //for button
-let btntoin = document.querySelectorAll(".btn-toin");
-let btnhide = document.querySelectorAll(".btn-hide");
+// let btntoin = document.querySelectorAll(".btn-toin");
+// let btnhide = document.querySelectorAll(".btn-hide");
 
-btntoin.forEach((button) => {
+// btntoin.forEach((button) => {
 
-    button.addEventListener("click", function (e) {
+//     button.addEventListener("click", function (e) {
 
-        let target = this.nextElementSibling;
+//         let target = this.nextElementSibling;
 
+//         if (target.classList.contains("show")) {
+//             target.classList.remove("show");
+//         } else {
+//             btnhide.forEach(content => {
+//                 content.classList.remove("show");
+//                 target.classList.add("show");
+//             });
+//         }
+
+
+//     });
+
+// });
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-toin")) {
+        let target = e.target.nextElementSibling;
         if (target.classList.contains("show")) {
             target.classList.remove("show");
+
         } else {
-            btnhide.forEach(content => {
+            document.querySelectorAll(".show").forEach(content => {
                 content.classList.remove("show");
-                target.classList.add("show");
             });
+            target.classList.add("show");
         }
-
-
-    });
-
+    }
 });
 
 

@@ -34,7 +34,11 @@ distime.min = formattedsetTime;
 
 
 // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
+var myNodelist = document.querySelectorAll(".myli");
+
+
+
+
 
 // var i;
 // for (i = 0; i < myNodelist.length; i++) {
@@ -66,12 +70,49 @@ for (i = 0; i < myNodelist.length; i++) {
 
 var i;
 for (i = 0; i < myNodelist.length; i++) {
-    var button1 = document.createElement("div");
-    var txt = document.createTextNode(":");
-    button1.className = "td-btn";
-    button1.appendChild(txt);
-    myNodelist[i].appendChild(button1);
+    var div1 = document.createElement("div");
+    div1.className = "td-btn";
+
+    //add button
+    var btn = document.createElement("button");
+    btn.className = "btn-toin";
+    btn.textContent = ":";
+    div1.appendChild(btn);
+
+    //add ul
+    var btncontent = document.createElement("ul");
+    btncontent.className = "btn-hide";
+
+    //add li
+    var btnblock1 = document.createElement("li");
+    btnblock1.textContent = "show";
+    btnblock1.className = "btn-sd";
+
+    // add div
+    // var shod = createElement("div");
+    // shod.className = "showd";
+    // shod.textContent = "Date set:<br>Title:<br>Description:<br>Set Date:<br>Set Time:<br>";
+    // btnblock1.appendChild(shod);
+
+    btncontent.appendChild(btnblock1);
+
+    //add li2
+    var btnblock2 = document.createElement("li");
+    btnblock2.textContent = "edit";
+    btnblock2.className = "btn-ed";
+    btncontent.appendChild(btnblock2);
+
+    div1.appendChild(btncontent);
+
+
+    // var txt = document.createTextNode(":");
+    // div1.className = "td-btn";
+    // div1.appendChild(txt);
+    myNodelist[i].appendChild(div1);
+    console.log(i);
 }
+
+
 
 var i;
 for (i = 0; i < myNodelist.length; i++) {
@@ -107,6 +148,7 @@ list.addEventListener('click', function (ev) {
 // Create a new list item when clicking on the "Add" button
 function newElement() {
     var li = document.createElement("li");
+    li.className = "myli";
 
     var span01 = document.createElement("span");
     var inputValue = document.getElementById("myInput").value;
@@ -173,31 +215,100 @@ function newElement() {
     document.getElementById("myInput").value = "";
 
 
-    var button1 = document.createElement("div");
-    var txt = document.createTextNode(":");
-    button1.className = "td-btn";
-    button1.appendChild(txt);
-    myNodelist[i].appendChild(button1);
+    // var button1 = document.createElement("div");
+    // var txt = document.createTextNode(":");
+    // button1.className = "td-btn";
+    // button1.appendChild(txt);
+    // myNodelist[i].appendChild(button1);
+
+    var div1 = document.createElement("div");
+    div1.className = "td-btn";
+
+    //add button
+    var btn = document.createElement("button");
+    btn.className = "btn-toin";
+    btn.textContent = ":";
+    div1.appendChild(btn);
+
+    //add ul
+    var btncontent = document.createElement("ul");
+    btncontent.className = "btn-hide";
+
+    //add li
+    var btnblock1 = document.createElement("li");
+    btnblock1.textContent = "show";
+    btnblock1.className = "btn-sd";
+
+    // add div
+    // var shod = createElement("div");
+    // shod.className = "showd";
+    // shod.textContent = "Date set:<br>Title:<br>Description:<br>Set Date:<br>Set Time:<br>";
+    // btnblock1.appendChild(shod);
+
+    btncontent.appendChild(btnblock1);
+
+    //add li2
+    var btnblock2 = document.createElement("li");
+    btnblock2.textContent = "edit";
+    btnblock2.className = "btn-ed";
+    btncontent.appendChild(btnblock2);
+
+    div1.appendChild(btncontent);
 
 
-    var span = document.createElement("SPAN");
+
+
+    // var txt = document.createTextNode(":");
+    // div1.className = "td-btn";
+    // div1.appendChild(txt);
+    li.appendChild(div1);
+
+
+    var span4 = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
+    span4.className = "close";
+    span4.appendChild(txt);
+    li.appendChild(span4);
 
     for (i = 0; i < close.length; i++) {
         close[i].onclick = function () {
-            var div = this.parentElement;
-            div.style.display = "none";
+            var disv = this.parentElement;
+            disv.style.display = "none";
         }
     }
+
+
+
+
+    // Click on a close button to hide the current list item
+
 
 
 
 }
 
 //for button
+let btntoin = document.querySelectorAll(".btn-toin");
+let btnhide = document.querySelectorAll(".btn-hide");
 
+btntoin.forEach((button) => {
+
+    button.addEventListener("click", function (e) {
+
+        let target = this.nextElementSibling;
+
+        if (target.classList.contains("show")) {
+            target.classList.remove("show");
+        } else {
+            btnhide.forEach(content => {
+                content.classList.remove("show");
+                target.classList.add("show");
+            });
+        }
+
+
+    });
+
+});
 
 

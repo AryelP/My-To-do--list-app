@@ -34,12 +34,17 @@
       padding: 0;
   }
 
-  /* Style the list items */
   ul li {
       cursor: pointer;
+      list-style-type: none;
+
+
+  }
+
+  /* Style the list items */
+  #myUL .myli {
       position: relative;
       padding: 12px 8px 12px 40px;
-      list-style-type: none;
       background: #eee;
       font-size: 18px;
       transition: 0.2s;
@@ -55,30 +60,31 @@
   }
 
   /* Set all odd list items to a different color (zebra-stripes) */
-  ul li:nth-child(odd) {
+  #myUL .myli:nth-child(odd) {
       background: #f9f9f9;
   }
 
   /* Darker background-color on hover */
-  ul li:hover {
+  #myUL .myli:hover {
       background: #ddd;
+
   }
 
   /* When clicked on, add a background color and strike out text */
-  ul li.checked {
+  #myUL .myli.checked {
       background: #888;
       color: #fff;
       text-decoration: line-through;
   }
 
   /* Add a "checked" mark when clicked on */
-  ul li.checked::before {
+  #myUL .myli.checked::before {
       content: '';
       position: absolute;
       border-color: #fff;
       border-style: solid;
       border-width: 0 2px 2px 0;
-      top: 20px;
+      top: 35px;
       left: 16px;
       transform: rotate(45deg);
       height: 15px;
@@ -164,9 +170,88 @@
       border-radius: 5px;
   }
 
-  .td-btn:hover {
 
-      background-color: #4924d1;
-      color: white;
+
+  /* for edit */
+
+
+  .td-btn {
+      position: relative;
+      display: inline-block;
+  }
+
+  .btn-toin {
+      /* background-color: rgb(108, 117, 124); */
+
+      background-color: transparent;
+      color: #555;
+      border: none;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px;
+      /* display: inline; */
+      /* border-radius: 5px; */
+  }
+
+  .btn-toin:hover {
+      background-color: #fff;
+      color: black;
 
   }
+
+  .btn-hide {
+
+      display: none;
+      position: absolute;
+      background-color: #eeeef0;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 2px 2px;
+      z-index: 1;
+  }
+
+  .btn-hide li {
+      color: rgb(77, 66, 66);
+  }
+
+  .btn-hide li:nth-child(odd) {
+      background-color: rgb(131, 199, 165);
+  }
+
+  .btn-hide li:nth-child(even) {
+      background-color: rgb(74, 141, 196);
+
+  }
+
+  .btn-hide li:hover {
+      background-color: #b9b1b1;
+      color: rgb(20, 19, 19);
+
+
+  }
+
+  /* .btn-hide li:hover .showd {
+      display: block;
+
+
+  } */
+
+
+  /* .btn-hide .close {
+      display: none;
+  } */
+
+  .show {
+      display: block;
+  }
+
+  /* .showd {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: -150px;
+      width: 100%;
+      background-color: gray;
+      padding: 5px;
+  } */

@@ -255,3 +255,35 @@
       background-color: gray;
       padding: 5px;
   } */
+
+
+
+@media screen and (max-width: 480px) {
+  input {
+    padding: 5px;
+  }
+
+ label, input{
+
+font-size: 14px;
+}
+
+ul li {
+font-size: 11px;
+}
+
+.header {
+padding: 10px 20px;
+}
+
+.addBtn {
+padding: 5px;
+margin-bottom: 15px;
+margin-top: 0;
+}
+ul li {
+padding-top: 6px;
+padding-bottom: 6px;
+
+}
+}

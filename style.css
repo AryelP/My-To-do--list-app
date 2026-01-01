@@ -46,7 +46,7 @@
       position: relative;
       padding: 12px 8px 12px 40px;
       background: #eee;
-      font-size: 18px;
+      font-size: 14px;
       transition: 0.2s;
       display: flex;
       justify-content: space-between;
@@ -273,7 +273,7 @@
       }
 
       ul .myli {
-          font-size: 11px;
+          font-size: 9px;
           padding-top: 6px;
           padding-bottom: 6px;
       }

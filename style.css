@@ -231,11 +231,11 @@
 
   }
 
-  /* .btn-hide li:hover .showd {
+  .btn-hide li:hover .showd {
       display: block;
 
 
-  } */
+  }
 
 
   /* .btn-hide .close {
@@ -246,12 +246,14 @@
       display: block;
   }
 
-  /* .showd {
+  .showd {
       display: none;
       position: absolute;
       top: 0;
       right: -150px;
       width: 100%;
       background-color: gray;
-      padding: 5px;
-  } */
+      padding: 10px;
+      font-size: 0.9rem;
+      font-weight: 100;
+  }

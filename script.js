@@ -88,11 +88,12 @@ for (i = 0; i < myNodelist.length; i++) {
     btnblock1.textContent = "show";
     btnblock1.className = "btn-sd";
 
+    var shod = document.createElement("div");
+    shod.className = "showd";
+
     // add div
-    // var shod = createElement("div");
-    // shod.className = "showd";
-    // shod.textContent = "Date set:<br>Title:<br>Description:<br>Set Date:<br>Set Time:<br>";
-    // btnblock1.appendChild(shod);
+    shod.textContent = "Date set:<br>Title:<br>Description:<br>Set Date:<br>Set Time:<br>";
+    btnblock1.appendChild(shod);
 
     btncontent.appendChild(btnblock1);
 

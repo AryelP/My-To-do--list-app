@@ -270,6 +270,8 @@ font-size: 14px;
 
 ul li {
 font-size: 11px;
+padding-top: 6px;
+padding-bottom: 6px;
 }
 
 .header {
@@ -281,9 +283,6 @@ padding: 5px;
 margin-bottom: 15px;
 margin-top: 0;
 }
-ul li {
-padding-top: 6px;
-padding-bottom: 6px;
 
-}
+
 }

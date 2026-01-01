@@ -253,7 +253,43 @@
       right: -150px;
       width: 100%;
       background-color: gray;
+<<<<<<< HEAD
       padding: 10px;
       font-size: 0.9rem;
       font-weight: 100;
   }
+=======
+      padding: 5px;
+  } */
+
+
+
+@media screen and (max-width: 480px) {
+  input {
+    padding: 5px;
+  }
+
+ label, input{
+
+font-size: 14px;
+}
+
+  ul  .myli{
+font-size: 11px;
+padding-top: 6px;
+padding-bottom: 6px;
+}
+
+.header {
+padding: 10px 20px;
+}
+
+.addBtn {
+padding: 5px;
+margin-bottom: 15px;
+margin-top: 0;
+}
+
+
+}
+>>>>>>> 09186ecbab3bc1a0374e53b7ca540f96bd94c095

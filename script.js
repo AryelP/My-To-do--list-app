@@ -91,8 +91,20 @@ for (i = 0; i < myNodelist.length; i++) {
     var shod = document.createElement("div");
     shod.className = "showd";
 
+    // list need to add data 
+    // let datad = document.getElementsByClassName("t-data")[i].innerHTML;
+
+    // let setdated = document.getElementsByClassName("setDate")[i].innerHTML;
+    // let sethourd = document.getElementsByClassName("setHour")[i].innerHTML;
+
+
     // add div
-    shod.textContent = "Date set:<br>Title:<br>Description:<br>Set Date:<br>Set Time:<br>";
+    shod.textContent = "Description:";
+    // shod.appendChild(datad);
+    // shod.appendChild(setdated);
+    // shod.appendChild(sethourd);
+
+
     btnblock1.appendChild(shod);
 
     btncontent.appendChild(btnblock1);
@@ -169,9 +181,13 @@ function newElement() {
     let gm = st.getMonth();
     let gd = st.getDate();
     let gy = st.getFullYear();
+    // for data value
     let gmn = mname[gm];
 
-    let fd = gmn + " " + gd + ", " + gy;
+    const mn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let gmn2 = mn[gm];
+
+    let fd = gmn2 + " " + gd + ", " + gy;
 
     var txt1 = document.createTextNode(fd);
     span1.className = "setDate";
@@ -243,10 +259,8 @@ function newElement() {
     btnblock1.className = "btn-sd";
 
     // add div
-    // var shod = createElement("div");
-    // shod.className = "showd";
-    // shod.textContent = "Date set:<br>Title:<br>Description:<br>Set Date:<br>Set Time:<br>";
-    // btnblock1.appendChild(shod);
+
+
 
     btncontent.appendChild(btnblock1);
 

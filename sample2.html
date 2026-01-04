@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Include the padding and border in an element's total width and height */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            /* display: none; */
+        }
+
+        .second-con {
+            height: 100vh;
+            background-color: violet;
+        }
+
+        .todolist {
+
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* Remove margins and padding from the list */
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            cursor: pointer;
+            list-style-type: none;
+
+
+        }
+
+        /* Style the list items */
+        #myUL .myli {
+            position: relative;
+            padding: 4px 8px 4px 40px;
+            background-color: #0e7fa1;
+
+            font-size: 16px;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        #myUL .myli:nth-child(odd) {
+            background-color: #88dce7;
+
+
+
+        }
+
+        /* Darker background-color on hover */
+        #myUL .myli:hover {
+            background: #ddd;
+
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        #myUL .myli.checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+        }
+
+        /* Add a "checked" mark when clicked on */
+        #myUL .myli.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 25px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+
+
+        }
+
+        /* Style the close button */
+        .close {
+            /* position: absolute;
+      right: 0;
+      top: 0; */
+            padding: 12px 16px 12px 16px;
+        }
+
+        .close:hover {
+            background-color: #1ba7b9;
+            color: white;
+        }
+
+
+
+        /* Style the header */
+        .header {
+            background-color: #0e7fa1;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the input */
+        input {
+            margin: 5px 0;
+            border: none;
+            border-radius: 0;
+            width: 75%;
+            padding: 10px;
+            /* float: left; */
+            font-size: 16px;
+            background-color: #88dce7;
+        }
+
+        /* Style the "Add" button */
+        .addBtn {
+            display: block;
+            padding: 10px;
+            width: 25%;
+            background: #d9d9d9;
+            color: #555;
+            /* float: left; */
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        .addBtn:hover {
+            background-color: #bbb;
+        }
+
+        label {
+            display: block;
+            width: 33%;
+            margin-top: 10px;
+        }
+
+        .td-btn {
+            background: transparent;
+            color: #555;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            display: inline;
+            border-radius: 5px;
+        }
+
+
+
+        /* for edit */
+
+
+        .td-btn {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-toin {
+            /* background-color: rgb(108, 117, 124); */
+
+            background-color: transparent;
+            color: #555;
+            border: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            /* display: inline; */
+            /* border-radius: 5px; */
+        }
+
+        .btn-toin:hover {
+            background-color: #fff;
+            color: black;
+
+        }
+
+        .btn-hide {
+
+            display: none;
+            position: absolute;
+            background-color: #eeeef0;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 2px 2px;
+            z-index: 1;
+        }
+
+        .btn-hide li {
+            color: rgb(77, 66, 66);
+        }
+
+        .btn-hide li:nth-child(odd) {
+            background-color: rgb(131, 199, 165);
+        }
+
+        .btn-hide li:nth-child(even) {
+            background-color: rgb(74, 141, 196);
+
+        }
+
+        .btn-hide li:hover {
+            background-color: #b9b1b1;
+            color: rgb(20, 19, 19);
+
+
+        }
+
+        /* .btn-hide li:hover .showd {
+            display: block;
+
+
+        } */
+
+
+        /* .btn-hide .close {
+      display: none;
+  } */
+
+        .show {
+            display: block;
+        }
+
+        .showd {
+            /* display: none; */
+            position: absolute;
+            top: 0;
+            right: -150px;
+            width: 100%;
+            background-color: gray;
+            padding: 10px;
+            width: 200px;
+            font-size: 0.9rem;
+            font-weight: 100;
+            height: auto;
+            text-align: left;
+            color: white;
+            border: rgb(30, 174, 199) 1px solid;
+            outline: blue 1px dotted;
+        }
+
+
+
+
+        @media screen and (max-width: 780px) {
+            input {
+                padding: 5px;
+            }
+
+            label,
+            input {
+
+                font-size: 14px;
+            }
+
+
+
+
+            ul li {
+                font-size: 9px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+
+            .header {
+                padding: 10px 20px;
+            }
+
+            .addBtn {
+                padding: 5px;
+                margin-bottom: 15px;
+                margin-top: 0;
+            }
+
+
+
+        }
+
+        body {
+            background-color: rgb(51, 49, 49);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="todolist">
+        <div class="container">
+            <div id="myDIV" class="header">
+                <h2 style="margin:5px">My To Do List</h2>
+                <label for="curdate">Current Date:</label>
+                <!-- <br> -->
+                <input type="text" id="curdate" name="curdate" readonly> <br>
+
+                <label for="myInput">Title:</label>
+                <input type="text" id="myInput" placeholder="Title...">
+                <br>
+                <label for="discrip">Discription:</label>
+                <input type="text" id="discrip" name="discrip"><br>
+
+                <label for="setdate">Set Date:</label>
+
+                <input type="date" id="setdate" name="setdate" min=""> <br>
+
+                <label for="timepick">Set Hours</label>
+                <input type="time" id="timepick"><br><br>
+                <span onclick="newElement()" class="addBtn">Add</span>
+            </div>
+
+            <ul id="myUL">
+                <li class="myli"><span class="t-data">Hit the gym</span></li>
+                <li class="myli checked"><span class="t-data">pay bills</span></li>
+
+            </ul>
+
+        </div>
+
+        <script>
+
+            // for input
+
+            const dt = new Date();
+            const date = dt.getDate();
+            const mdex = dt.getMonth();
+            const year = dt.getFullYear();
+            let hours = dt.getHours();
+            const seconds = dt.getSeconds();
+            const minutes = dt.getMinutes().toString().padStart(2, 0);
+
+            const today = dt.toISOString().split('T')[0];
+            const mname = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const month = mname[mdex];
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+
+            let disday = document.getElementById("setdate");
+            disday.min = today;
+            disday.value = today;
+
+            const time = month + " " + date + ", " + year + " " + hours + ":" + minutes + " " + ampm;
+            document.getElementById("curdate").value = time;
+
+            let distime = document.getElementById("timepick");
+
+            let setTime = hours + 1;
+            let sethours = setTime.toString().padStart(2, '0');
+            let setminutes = dt.getMinutes().toString().padStart(2, '0');
+            let formattedsetTime = sethours + ":" + minutes;
+            distime.value = formattedsetTime;
+            distime.min = formattedsetTime;
+
+
+
+            // Create a "close" button and append it to each list item
+            var myNodelist = document.querySelectorAll(".myli");
+
+
+
+
+            var i;
+            for (i = 0; i < myNodelist.length; i++) {
+                var span1 = document.createElement("SPAN");
+                var txt = document.createTextNode("");
+                span1.className = "setDate";
+                span1.appendChild(txt);
+                myNodelist[i].appendChild(span1);
+            }
+
+            var i;
+            for (i = 0; i < myNodelist.length; i++) {
+                var span2 = document.createElement("SPAN");
+                var txt = document.createTextNode("");
+                span2.className = "setHour";
+                span2.appendChild(txt);
+                myNodelist[i].appendChild(span2);
+            }
+
+            var i;
+            for (i = 0; i < myNodelist.length; i++) {
+                var div1 = document.createElement("div");
+                div1.className = "td-btn";
+
+                //add button
+                var btn = document.createElement("button");
+                btn.className = "btn-toin";
+                btn.textContent = ":";
+                div1.appendChild(btn);
+
+                //add ul
+                var btncontent = document.createElement("ul");
+                btncontent.className = "btn-hide";
+
+                //add li
+                var btnblock1 = document.createElement("li");
+                btnblock1.textContent = "show";
+                btnblock1.className = "btn-sd";
+
+                var shod = document.createElement("div");
+                shod.className = "showd";
+
+
+
+                // add div
+                shod.textContent = "Description:";
+
+                btnblock1.appendChild(shod);
+
+                btncontent.appendChild(btnblock1);
+
+                //add li2
+                var btnblock2 = document.createElement("li");
+                btnblock2.textContent = "edit";
+                btnblock2.className = "btn-ed";
+                btncontent.appendChild(btnblock2);
+
+                div1.appendChild(btncontent);
+
+
+
+                myNodelist[i].appendChild(div1);
+                console.log(i);
+            }
+
+
+
+            var i;
+            for (i = 0; i < myNodelist.length; i++) {
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                myNodelist[i].appendChild(span);
+            }
+
+            // Click on a close button to hide the current list item
+            var close = document.getElementsByClassName("close");
+            var i;
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+
+
+
+
+
+            // Add a "checked" symbol when clicking on a list item
+            var list = document.querySelector('ul');
+            list.addEventListener('click', function (ev) {
+                if (ev.target.tagName === 'LI') {
+                    ev.target.classList.toggle('checked');
+                }
+            }, false);
+
+            // Create a new list item when clicking on the "Add" button
+
+
+            function newElement() {
+                var li = document.createElement("li");
+                li.className = "myli";
+
+                var span01 = document.createElement("span");
+
+                //for task
+                var inputValue = document.getElementById("myInput").value;
+                var txt3 = document.createTextNode(inputValue);
+                span01.className = "t-data";
+                span01.appendChild(txt3);
+                li.appendChild(span01);
+
+                //for description
+                var descripvalue = document.getElementById("discrip").value;
+
+
+
+                //for date
+                var span1 = document.createElement("span");
+                var dateinput = document.getElementById("setdate").value;
+                // dt.setDate(dateinput);
+                let st = new Date(dateinput);
+                let gm = st.getMonth();
+                let gd = st.getDate();
+                let gy = st.getFullYear();
+                // for data value
+                let gmn = mname[gm];
+
+                const mn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                let gmn2 = mn[gm];
+
+                let fd = gmn2 + " " + gd + ", " + gy;
+
+                var txt1 = document.createTextNode(fd);
+                span1.className = "setDate";
+                span1.appendChild(txt1);
+
+                // document.body.innerHTML = dateinput;
+
+
+
+                //for hour
+
+                var span2 = document.createElement("span");
+                var hourinput = document.getElementById("timepick").value;
+                let hour = parseInt(hourinput.split(":")[0]);
+                let minutes = parseInt(hourinput.split(":")[1]);
+                minutes = minutes.toString().padStart(2, 0);
+                let setampm = hour >= 12 ? 'PM' : 'AM';
+                hour = hour % 12 || 12;
+                let mh = hour.toString().padStart(2, 0);
+                let cm = mh + ":" + minutes + " " + setampm;
+
+
+
+                var txt2 = document.createTextNode(cm);
+                span2.className = "setHour";
+                span2.appendChild(txt2);
+
+                //for input
+
+
+                li.appendChild(span1);
+                li.appendChild(span2);
+
+
+
+
+
+
+                var div1 = document.createElement("div");
+                div1.className = "td-btn";
+
+                //add button
+                var btn = document.createElement("button");
+                btn.className = "btn-toin";
+                btn.textContent = ":";
+                div1.appendChild(btn);
+
+                //add ul
+                var btncontent = document.createElement("ul");
+                btncontent.className = "btn-hide";
+
+                //add li
+                var btnblock1 = document.createElement("li");
+                btnblock1.textContent = "show";
+
+                btnblock1.className = "btn-sd";
+
+                // add div
+                var wed = document.createElement("div");
+                wed.className = "showd";
+
+                // var rb = document.createElement("br");
+                // wed.appendChild(rb);
+                // wed.textContent = "Task:";
+
+                // var task = document.getElementById("myInput").value;
+
+                // var taskn = document.createTextNode(task);
+                // wed.appendChild(taskn);
+
+
+                // Using backticks allows for easy multi-line HTML strings
+
+
+
+                wed.innerHTML = `
+    <h2>My Task </h2>
+    Task: ${inputValue}<br>
+    Description: ${descripvalue}<br>
+    Set Date: ${gmn2} ${gd}, ${gy}<br>
+    Set Hour: ${cm}
+
+`;
+
+                btnblock1.appendChild(wed);
+
+
+
+                btncontent.appendChild(btnblock1);
+
+                //add li2
+                var btnblock2 = document.createElement("li");
+                btnblock2.textContent = "edit";
+                btnblock2.className = "btn-ed";
+                btncontent.appendChild(btnblock2);
+
+                div1.appendChild(btncontent);
+
+                li.appendChild(div1);
+
+
+                var span4 = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span4.className = "close";
+                span4.appendChild(txt);
+                li.appendChild(span4);
+
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function () {
+                        var disv = this.parentElement;
+                        disv.style.display = "none";
+                    }
+                }
+
+
+
+
+
+                if (inputValue === '') {
+                    alert("You must write something!");
+                } else {
+                    document.getElementById("myUL").appendChild(li);
+                }
+                document.getElementById("myInput").value = "";
+
+
+
+            }
+
+
+            document.addEventListener("click", function (e) {
+                if (e.target.classList.contains("btn-toin")) {
+                    let target = e.target.nextElementSibling;
+                    if (target.classList.contains("show")) {
+                        target.classList.remove("show");
+
+                    } else {
+                        document.querySelectorAll(".show").forEach(content => {
+                            content.classList.remove("show");
+                        });
+                        target.classList.add("show");
+                    }
+                }
+            });
+
+            // document.addEventListener("click", function (e) {
+            //     if (e.target.classList.contains("btn-sd")) {
+            //         let target = e.target.nextElementSibling;
+            //         if (target.classList.contains("show")) {
+            //             target.classList.remove("show");
+
+            //         } else {
+            //             document.querySelectorAll(".show").forEach(content => {
+            //                 content.classList.remove("show");
+            //             });
+            //             target.classList.add("show");
+            //         }
+            //     }
+            // });
+
+
+
+
+        </script>
+</body>
+
+</html>

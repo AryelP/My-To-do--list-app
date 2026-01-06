@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        div {
+            width: 50%;
+            background-color: aqua;
+            padding: 20px;
+            margin-top: 40px;
+
+        }
+
+        button {
+            margin-top: 40px;
+            padding: 10px 15px;
+            background-color: red;
+            border: none;
+            color: white;
+
+        }
+
+        button:hover {
+            background-color: rgb(35, 51, 46);
+        }
+
+        /* Highlights the box when it is being edited */
+        div[contenteditable="true"] {
+            outline: 2px dashed #000;
+            background-color: #e0ffff;
+            /* Slightly lighter aqua */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ide">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptate expedita beatae ex omnis,
+        obcaecati eligendi praesentium quidem, labore est quaerat corporis delectus inventore veritatis dicta nihil.
+        Ullam, laboriosam sunt!
+    </div>
+    <button class="edit-btn" type="button">edit</button>
+    <script>
+
+        // const editBtn = document.querySelector('button');
+        // const contentDiv = document.getElementById('ide');
+
+        // editBtn.addEventListener('click', () => {
+        //     // Check if the div is currently editable
+        //     const isEditable = contentDiv.contentEditable === "true";
+
+        //     // Toggle the state
+        //     contentDiv.contentEditable = !isEditable;
+
+        //     // Update button text and style for better UX
+        //     if (!isEditable) {
+        //         contentDiv.focus(); // Set cursor inside the box
+        //         editBtn.textContent = "Save";
+        //         editBtn.style.backgroundColor = "green";
+        //     } else {
+        //         editBtn.textContent = "Edit";
+        //         editBtn.style.backgroundColor = "red";
+        //     }
+        // });
+
+
+
+        // Select all buttons with the class 'edit-btn'
+        const buttons = document.querySelectorAll('.edit-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Find the div that is right before this specific button
+                const contentDiv = button.previousElementSibling;
+
+                const isEditable = contentDiv.contentEditable === "true";
+
+                // Toggle state
+                contentDiv.contentEditable = !isEditable;
+
+                if (!isEditable) {
+                    contentDiv.focus();
+                    button.textContent = "Save";
+                    button.style.backgroundColor = "green";
+                } else {
+                    button.textContent = "Edit";
+                    button.style.backgroundColor = "red";
+                    // Optional: console.log the specific content saved
+                    console.log("Saved content:", contentDiv.innerText);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -231,20 +231,18 @@
 
   }
 
-  .btn-hide li:hover .showd {
+  /* .btn-hide li:hover .showd {
       display: block;
 
 
-  }
+  } */
 
 
   /* .btn-hide .close {
       display: none;
   } */
 
-  .show {
-      display: block;
-  }
+
 
   .showd {
       display: none;
@@ -254,11 +252,20 @@
       width: 100%;
       background-color: gray;
       padding: 10px;
+      width: 200px;
       font-size: 0.9rem;
       font-weight: 100;
+      height: auto;
+      /* justify-content: center; */
+      text-align: left;
+      color: white;
+      border: rgb(30, 174, 199) 1px solid;
+      outline: blue 1px dotted;
   }
 
-
+  .show {
+      display: block;
+  }
 
 
   @media screen and (max-width: 780px) {

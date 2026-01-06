@@ -250,12 +250,9 @@
       display: none;
   } */
 
-        .show {
-            display: block;
-        }
 
         .showd {
-            /* display: none; */
+            display: none;
             position: absolute;
             top: 0;
             right: -150px;
@@ -266,6 +263,7 @@
             font-size: 0.9rem;
             font-weight: 100;
             height: auto;
+            /* justify-content: center; */
             text-align: left;
             color: white;
             border: rgb(30, 174, 199) 1px solid;
@@ -274,6 +272,9 @@
 
 
 
+        .show {
+            display: block;
+        }
 
         @media screen and (max-width: 780px) {
             input {
@@ -346,6 +347,7 @@
             </ul>
 
         </div>
+        <p id="demo"></p>
 
         <script>
 
@@ -513,7 +515,8 @@
                 // dt.setDate(dateinput);
                 let st = new Date(dateinput);
                 let gm = st.getMonth();
-                let gd = st.getDate();
+                // let gd = st.getDate();
+                let gd = String(st.getDate()).padStart(2, '0');
                 let gy = st.getFullYear();
                 // for data value
                 let gmn = mname[gm];
@@ -667,23 +670,48 @@
                 }
             });
 
+            //button for show to showd
+
             // document.addEventListener("click", function (e) {
             //     if (e.target.classList.contains("btn-sd")) {
-            //         let target = e.target.nextElementSibling;
+            //         let target = e.target.children[0];
+
             //         if (target.classList.contains("show")) {
             //             target.classList.remove("show");
 
+            //         }
+            //         // else {
+            //         //     document.querySelectorAll(".show").forEach(content => {
+            //         //         content.classList.remove("show");
+            //         //     });
+            //         //     target.classList.add("show");
+            //         // }
+            //     }
+            // });
+            // document.addEventListener("click", function (e) {
+            //     // 1. Check if the clicked element has the class "btn-sd"
+            //     if (e.target.classList.contains("btn-sd")) {
+
+            //         // 2. Get the first child of that button
+            //         let targetElement = e.target.children[0];
+
+            //         // 3. Toggle the "show" class
+            //         if (targetElement.classList.contains("show")) {
+            //             targetElement.classList.remove("show");
             //         } else {
-            //             document.querySelectorAll(".show").forEach(content => {
-            //                 content.classList.remove("show");
-            //             });
-            //             target.classList.add("show");
+            //             targetElement.classList.add("show");
             //         }
             //     }
             // });
 
+            document.addEventListener("click", function (e) {
+                if (e.target.classList.contains("btn-sd")) {
+
+                    e.target.children[0].classList.toggle("show");
 
 
+                }
+            });
 
         </script>
 </body>

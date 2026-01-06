@@ -88,24 +88,22 @@ for (i = 0; i < myNodelist.length; i++) {
     btnblock1.textContent = "show";
     btnblock1.className = "btn-sd";
 
-    var shod = document.createElement("div");
-    shod.className = "showd";
+    var wed = document.createElement("div");
 
-    // list need to add data 
-    // let datad = document.getElementsByClassName("t-data")[i].innerHTML;
 
-    // let setdated = document.getElementsByClassName("setDate")[i].innerHTML;
-    // let sethourd = document.getElementsByClassName("setHour")[i].innerHTML;
+    wed.className = "showd";
+    let inputValue = document.getElementsByClassName("t-data")[i].innerHTML;
 
+    wed.innerHTML = `
+    <h2>My Task </h2>
+    Task: ${inputValue}<br>
+    Description: <br>
+    Set Date: <br>
+    Set Hour: `;
+
+    btnblock1.appendChild(wed);
 
     // add div
-    shod.textContent = "Description:";
-    // shod.appendChild(datad);
-    // shod.appendChild(setdated);
-    // shod.appendChild(sethourd);
-
-
-    btnblock1.appendChild(shod);
 
     btncontent.appendChild(btnblock1);
 
@@ -122,7 +120,6 @@ for (i = 0; i < myNodelist.length; i++) {
     // div1.className = "td-btn";
     // div1.appendChild(txt);
     myNodelist[i].appendChild(div1);
-    console.log(i);
 }
 
 
@@ -172,6 +169,10 @@ function newElement() {
     span01.appendChild(txt3);
     li.appendChild(span01);
 
+    //for description
+    var descripvalue = document.getElementById("discrip").value;
+
+
 
     //for date
     var span1 = document.createElement("span");
@@ -179,7 +180,8 @@ function newElement() {
     // dt.setDate(dateinput);
     let st = new Date(dateinput);
     let gm = st.getMonth();
-    let gd = st.getDate();
+    // let gd = st.getDate();
+    let gd = String(st.getDate()).padStart(2, '0');
     let gy = st.getFullYear();
     // for data value
     let gmn = mname[gm];
@@ -259,9 +261,17 @@ function newElement() {
     btnblock1.className = "btn-sd";
 
     // add div
+    var wed = document.createElement("div");
+    wed.className = "showd";
 
+    wed.innerHTML = `
+    <h2>My Task </h2>
+    Task: <span class="t-data">${inputValue}</span><br>
+    Description: <span class="discripValue">${descripvalue}</span><br>
+    Set Date: <span class="setDate">${gmn2} ${gd}, ${gy}</span><br>
+    Set Hour: <span class="SetHour">${cm}</span>`;
 
-
+    btnblock1.appendChild(wed);
     btncontent.appendChild(btnblock1);
 
     //add li2
@@ -337,4 +347,45 @@ document.addEventListener("click", function (e) {
     }
 });
 
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-sd")) {
+        // This adds "show" if it's missing, and removes it if it's there
+        e.target.firstElementChild.classList.toggle("show");
+    }
+});
 
+//    document.addEventListener("click", function (e) {
+//                 if (e.target.classList.contains("btn-sd")) {
+
+//                     e.target.children[0].classList.toggle("show");
+
+
+//                 }
+//             });
+const buttons = document.querySelectorAll('.btn-ed');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        // 1. Find the sibling before the button
+        const siblingContainer = button.previousElementSibling;
+
+        // 2. Find the div INSIDE that sibling
+        const editableDiv = siblingContainer.querySelectorAll('div');
+
+        // 3. Toggle Logic
+        const isEditing = editableDiv.contentEditable === "true";
+
+        if (!isEditing) {
+            editableDiv.style.display = "block";
+            editableDiv.contentEditable = "true";
+            editableDiv.focus();
+            button.textContent = "Save";
+            button.style.backgroundColor = "green";
+        } else {
+            editableDiv.contentEditable = "false";
+            button.textContent = "Edit";
+            button.style.backgroundColor = "red";
+            console.log("Saved:", editableDiv.innerText);
+        }
+    });
+});

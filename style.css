@@ -268,9 +268,10 @@
   }
 
 
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 480px) {
+
       input {
-          padding: 5px;
+          padding: 12px;
       }
 
       label,
@@ -282,10 +283,18 @@
 
 
 
+<<<<<<< HEAD
       ul li {
           font-size: 9px;
           padding-top: 2px;
           padding-bottom: 2px;
+=======
+      ul .myli {
+          font-size: 9px;
+          padding-top: 2px;
+
+          padding-bottom: 3px;
+>>>>>>> 340a6a4dfa4a14c754b0bcde118ea1c6a07a1123
       }
 
       .header {
